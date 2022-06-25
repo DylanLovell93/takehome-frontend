@@ -5,16 +5,23 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 const LandingPage = () => {
-  const [status, setStatus] = useState();
+  const [status, setStatus] = useState(undefined);
   const URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
+    console.log("useEffect");
     const getStatus = async () => {
-      const res = await axios.get(URL);
-      setStatus(res.status === 200);
+      try {
+        const res = await axios.get(URL);
+        setStatus(res.status === 200);
+      } catch (err) {
+        setStatus(false);
+      }
     };
     getStatus();
   }, [URL]);
+
+  console.log(status, status === undefined);
 
   return (
     <div className="LandingPage">
@@ -23,7 +30,7 @@ const LandingPage = () => {
         <p>
           {status === undefined
             ? "Loading..."
-            : status
+            : status === true
             ? "Successfully connected to express server."
             : "Connection to express server failed."}
         </p>
