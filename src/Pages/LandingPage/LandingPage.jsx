@@ -9,7 +9,6 @@ const LandingPage = () => {
   const URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    console.log("useEffect");
     const getStatus = async () => {
       try {
         const res = await axios.get(URL);
