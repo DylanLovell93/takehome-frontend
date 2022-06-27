@@ -37,3 +37,14 @@
 .MenuItems li {
   padding: 5px 20px;
 }
+
+@media screen and (min-width: 601px) {
+  .MenuItems {
+    width: auto;
+    height: auto;
+  }
+
+  .MenuItems .menuBar {
+    display: none;
+  }
+}

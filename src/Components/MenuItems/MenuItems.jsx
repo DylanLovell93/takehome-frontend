@@ -8,7 +8,11 @@ const MenuItems = ({ onClose, mobile }) => {
   const listItems = itemData.map((item) => (
     <li>
       <Link to={item.link}>
-        <Typography variant="h5" component="div" sx={{ mr: "auto" }}>
+        <Typography
+          variant="h5"
+          component="div"
+          sx={mobile ? { mr: "auto" } : { m: 0 }}
+        >
           {item.text}
         </Typography>
       </Link>
