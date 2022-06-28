@@ -20,8 +20,6 @@ const LandingPage = () => {
     getStatus();
   }, [URL]);
 
-  console.log(status, status === undefined);
-
   return (
     <div className="LandingPage">
       <header className="Landing-header">
