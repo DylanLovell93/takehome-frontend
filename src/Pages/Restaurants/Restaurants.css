@@ -1,3 +1,6 @@
 .Restaurants {
   background-color: green;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
 }
