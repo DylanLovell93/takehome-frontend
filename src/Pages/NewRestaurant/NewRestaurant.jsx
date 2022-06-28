@@ -1,11 +1,11 @@
 import "./NewRestaurant.css";
 import React from "react";
-import Navbar from "../../Components/Navbar/Navbar";
+import NavBar from "../../Components/NavBar/NavBar";
 
 const NewRestaurant = () => {
   return (
     <div className="NewRestaurant">
-      <Navbar />
+      <NavBar />
       NewRestaurant
     </div>
   );

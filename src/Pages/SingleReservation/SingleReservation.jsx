@@ -1,12 +1,12 @@
 import "./SingleReservation.css";
 import React from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../../Components/Navbar/Navbar";
+import NavBar from "../../Components/NavBar/NavBar";
 const SingleReservation = () => {
   const { id } = useParams();
   return (
     <div className="SingleReservation">
-      <Navbar />
+      <NavBar />
       SingleReservation - {id}
     </div>
   );

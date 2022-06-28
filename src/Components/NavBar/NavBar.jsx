@@ -1,4 +1,5 @@
-import "./Navbar.css";
+import "./NavBar.css";
+import React from "react";
 import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -11,7 +12,7 @@ import Modal from "@mui/material/Modal";
 import MenuItems from "../MenuItems/MenuItems";
 import SearchBar from "../SearchBar/SearchBar";
 
-const Navbar = () => {
+const NavBar = React.forwardRef((props, ref) => {
   const mobileQuery = window.matchMedia("(max-width: 600px)");
   const [mobile, setMobile] = useState(mobileQuery.matches);
   const [menuOpen, setMenu] = useState(false);
@@ -36,7 +37,6 @@ const Navbar = () => {
   mobileQuery.onchange = (e) => {
     setMobile(e.matches);
   };
-
   return (
     <Box className="NavBar" sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -50,8 +50,14 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Modal open={menuOpen} onClose={handleMenuClose}>
-            <MenuItems onClose={handleMenuClose} mobile={mobile} />
+          <Modal
+            open={menuOpen}
+            onClose={handleMenuClose}
+            children={<MenuItems onClose={handleMenuClose} mobile={mobile} />}
+          >
+            <>
+              <MenuItems onClose={handleMenuClose} mobile={mobile} />
+            </>
           </Modal>
           <Typography
             variant="h6"
@@ -61,14 +67,27 @@ const Navbar = () => {
             {mobile ? "Mobile" : "Desktop"}
           </Typography>
           {mobile ? (
-            <IconButton
-              size="large"
-              edge="end"
-              color="inherit"
-              aria-label="menu"
-            >
-              <SearchIcon />
-            </IconButton>
+            <>
+              <IconButton
+                size="large"
+                edge="end"
+                color="inherit"
+                aria-label="menu"
+                onClick={handleSearchOpen}
+              >
+                <SearchIcon />
+              </IconButton>
+              <Modal
+                open={searchOpen}
+                onClose={handleSearchClose}
+                className="searchModal"
+                children={<SearchBar onClose={handleSearchClose} />}
+              >
+                <>
+                  <SearchBar onClose={handleSearchClose} />
+                </>
+              </Modal>
+            </>
           ) : (
             <SearchBar />
           )}
@@ -76,6 +95,6 @@ const Navbar = () => {
       </AppBar>
     </Box>
   );
-};
+});
 
-export default Navbar;
+export default NavBar;
