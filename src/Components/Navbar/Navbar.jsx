@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import Modal from "@mui/material/Modal";
 import MenuItems from "../MenuItems/MenuItems";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Navbar = () => {
   const mobileQuery = window.matchMedia("(max-width: 600px)");
@@ -59,9 +60,18 @@ const Navbar = () => {
           >
             {mobile ? "Mobile" : "Desktop"}
           </Typography>
-          <IconButton size="large" edge="end" color="inherit" aria-label="menu">
-            <SearchIcon />
-          </IconButton>
+          {mobile ? (
+            <IconButton
+              size="large"
+              edge="end"
+              color="inherit"
+              aria-label="menu"
+            >
+              <SearchIcon />
+            </IconButton>
+          ) : (
+            <SearchBar />
+          )}
         </Toolbar>
       </AppBar>
     </Box>
