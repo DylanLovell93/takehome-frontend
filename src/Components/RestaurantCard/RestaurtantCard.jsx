@@ -13,7 +13,6 @@ import {
 const RestaurantCard = ({ data }) => {
   const { name, description, location, id, price } = data;
   const nav = useNavigate();
-  console.log(data);
 
   const seeMore = () => {
     nav(`/restaurants/${id}`);
