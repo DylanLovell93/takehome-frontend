@@ -13,7 +13,6 @@ import {
 const RestaurantCard = ({ data }) => {
   const { name, description, location, id, price } = data;
   const nav = useNavigate();
-  console.log(data);
 
   const seeMore = () => {
     nav(`/restaurants/${id}`);
@@ -28,7 +27,7 @@ const RestaurantCard = ({ data }) => {
         component="img"
         height="140"
         image="https://dreamworldtravel.co.uk/assets/img/img-not-found-01.jpg"
-        alt="green iguana"
+        alt={`${name}'s image`}
       />
       <CardContent>
         <Typography
