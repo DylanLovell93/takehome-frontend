@@ -2,10 +2,10 @@ import "./NewRestaurant.css";
 import React from "react";
 import NavBar from "../../Components/NavBar/NavBar";
 
-const NewRestaurant = () => {
+const NewRestaurant = ({ mobile }) => {
   return (
     <div className="NewRestaurant">
-      <NavBar />
+      <NavBar mobile={mobile} />
       NewRestaurant
     </div>
   );

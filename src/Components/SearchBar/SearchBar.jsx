@@ -23,7 +23,7 @@ const SearchBar = React.forwardRef((props, ref) => {
     } else {
       nav("/restaurants?search=" + searchInput);
       setSearch("");
-      onClose();
+      onClose && onClose();
     }
   };
 

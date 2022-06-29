@@ -13,8 +13,7 @@ import MenuItems from "../MenuItems/MenuItems";
 import SearchBar from "../SearchBar/SearchBar";
 
 const NavBar = React.forwardRef((props, ref) => {
-  const mobileQuery = window.matchMedia("(max-width: 600px)");
-  const [mobile, setMobile] = useState(mobileQuery.matches);
+  const { mobile } = props;
   const [menuOpen, setMenu] = useState(false);
   const [searchOpen, setSearch] = useState(false);
 
@@ -34,9 +33,6 @@ const NavBar = React.forwardRef((props, ref) => {
     setSearch(false);
   };
 
-  mobileQuery.onchange = (e) => {
-    setMobile(e.matches);
-  };
   return (
     <Box className="NavBar" sx={{ flexGrow: 1 }}>
       <AppBar position="static">
