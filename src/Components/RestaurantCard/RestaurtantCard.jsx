@@ -28,7 +28,6 @@ const RestaurantCard = ({ data }) => {
         component="img"
         height="140"
         image="https://dreamworldtravel.co.uk/assets/img/img-not-found-01.jpg"
-        alt="green iguana"
       />
       <CardContent>
         <Typography
