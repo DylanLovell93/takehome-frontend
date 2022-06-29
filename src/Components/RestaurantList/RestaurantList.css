@@ -1,3 +1,8 @@
 .RestaurantList {
-  background-color: aqua;
+  background-color: #242424;
+  height: 100%;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
 }
