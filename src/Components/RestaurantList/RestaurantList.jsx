@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import RestaurtantCard from "../RestaurantCard/RestaurtantCard";
 
 const RestaurantList = ({ mobile }) => {
   const [restaurants, setRestaurants] = useState([]);
@@ -27,7 +28,7 @@ const RestaurantList = ({ mobile }) => {
   }, [URL, search]);
 
   const cards = restaurants.map((e, i) => (
-    <div key={"card" + (i + 1)}>{e.name}</div>
+    <RestaurtantCard data={e} key={"card" + (i + 1)} />
   ));
 
   return (
