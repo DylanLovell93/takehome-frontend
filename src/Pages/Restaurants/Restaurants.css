@@ -1,0 +1,12 @@
+.Restaurants {
+  background-color: green;
+  box-sizing: border-box;
+  height: calc(100% - 56px);
+  width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  .Restaurants {
+    height: calc(100% - 64px);
+  }
+}

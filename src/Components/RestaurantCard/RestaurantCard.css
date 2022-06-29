@@ -1,0 +1,7 @@
+.RestaurantCard {
+}
+
+.RestaurantCard .location {
+  color: #cdcdcd;
+  font-size: small;
+}
