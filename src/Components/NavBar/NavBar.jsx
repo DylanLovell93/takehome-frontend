@@ -35,8 +35,11 @@ const NavBar = React.forwardRef((props, ref) => {
 
   return (
     <Box className="NavBar" sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
+      <AppBar
+        position="static"
+        sx={{ backgroundColor: "#202020", width: "100%" }}
+      >
+        <Toolbar className="toolbar" sx={{ "max-width": "700px" }}>
           <IconButton
             size="large"
             edge="start"
