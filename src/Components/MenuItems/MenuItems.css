@@ -27,6 +27,7 @@
   text-decoration: underline solid gray 2.5px;
 }
 .MenuItems ul {
+  background-color: #484848;
   list-style: none;
   padding-left: 0px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
@@ -38,21 +39,36 @@
   padding: 5px 20px;
 }
 
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 600px) {
+  .MenuItems {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
   .MenuItems {
     width: 300px;
     height: auto;
     margin-top: 64px;
     border-radius: 0px 0px 10px 10px;
-    margin-left: 50px;
+    margin-left: 5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-bottom: none;
   }
 
   .MenuItems .menuBar {
     display: none;
   }
+  .MenuItems ul {
+    border-radius: 0px 0px 10px 10px;
+    border-bottom: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .MenuItems {
+    margin-left: calc((100vw - 1100px) / 2);
+  }
 
   .MenuItems ul {
-    border-bottom: none;
+    margin-left: 0px;
   }
 }
