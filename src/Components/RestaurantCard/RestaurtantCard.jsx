@@ -21,7 +21,12 @@ const RestaurantCard = ({ data }) => {
   return (
     <Card
       className="RestaurantCard"
-      sx={{ maxWidth: 345, mx: "auto", my: 2, background: "#606060" }}
+      sx={{
+        maxWidth: 345,
+        mx: "auto",
+        my: 2,
+        background: "#606060",
+      }}
     >
       <CardMedia
         component="img"
@@ -42,7 +47,7 @@ const RestaurantCard = ({ data }) => {
         <Typography variant="body2" color="white" sx={{ mb: 2 }}>
           {`Price: ${price}`}
         </Typography>
-        <Typography variant="body2" color="white">
+        <Typography variant="body2" color="white" sx={{ width: "313px" }}>
           {description.length > 100
             ? description.slice(0, 100) + "..."
             : description}
