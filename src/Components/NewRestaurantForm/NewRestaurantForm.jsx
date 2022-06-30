@@ -1,15 +1,6 @@
 import "./NewRestaurantForm.css";
 import React from "react";
-import {
-  FormControl,
-  InputLabel,
-  Input,
-  FormHelperText,
-  Box,
-  Typography,
-  TextField,
-  MenuItem,
-} from "@mui/material";
+import { Box, Typography, TextField, MenuItem } from "@mui/material";
 
 const NewRestaurantForm = () => {
   const sx = {
