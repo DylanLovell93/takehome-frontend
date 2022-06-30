@@ -44,7 +44,11 @@ const RestaurantList = ({ mobile }) => {
             </Typography>
           </>
         ) : (
-          <Typography variant="h5" component="div" sx={{ mx: "auto" }}>
+          <Typography
+            variant="h5"
+            component="div"
+            sx={{ mx: "auto", width: "100%" }}
+          >
             Browse Restaurants
           </Typography>
         )}
