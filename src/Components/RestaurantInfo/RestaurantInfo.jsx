@@ -37,14 +37,17 @@ const RestaurantInfo = ({ mobile }) => {
   } = restaurant;
 
   return (
-    <Card className="RestaurantInfo" sx={{ background: "#242424" }}>
+    <Card
+      className="RestaurantInfo"
+      sx={{ background: "#242424", overflow: "scroll" }}
+    >
       <CardMedia
         component="img"
         height="250"
         image="https://dreamworldtravel.co.uk/assets/img/img-not-found-01.jpg"
         alt={`${name}'s image`}
       />
-      <CardContent>
+      <CardContent id="content">
         <Typography
           className="resTitle"
           variant="h4"

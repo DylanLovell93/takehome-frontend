@@ -3,8 +3,9 @@ import "./LandingPage.css";
 import logo from "../../logo.svg";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import NavBar from "../../Components/NavBar/NavBar";
 
-const LandingPage = () => {
+const LandingPage = ({ mobile }) => {
   const [status, setStatus] = useState(undefined);
   const URL = process.env.REACT_APP_API_URL;
 
@@ -21,18 +22,21 @@ const LandingPage = () => {
   }, [URL]);
 
   return (
-    <div className="LandingPage">
-      <header className="Landing-header">
-        <img src={logo} className="Landing-logo" alt="logo" />
-        <p>
-          {status === undefined
-            ? "Loading..."
-            : status === true
-            ? "Successfully connected to express server."
-            : "Connection to express server failed."}
-        </p>
-      </header>
-    </div>
+    <>
+      <NavBar mobile={mobile} />
+      <div className="LandingPage">
+        <header className="Landing-header">
+          <img src={logo} className="Landing-logo" alt="logo" />
+          <p>
+            {status === undefined
+              ? "Loading..."
+              : status === true
+              ? "Successfully connected to express server."
+              : "Connection to express server failed."}
+          </p>
+        </header>
+      </div>
+    </>
   );
 };
 

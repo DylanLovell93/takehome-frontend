@@ -1,3 +1,18 @@
 .NewRestaurantForm {
-  background-color: green;
+  background-color: #181818;
+  height: 100%;
+  margin: 0px auto;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.NewRestaurantForm .formControl {
+  display: flex;
+  margin: 15px auto;
+  min-width: 0px;
+  width: 90%;
+}
+
+.NewRestaurantForm #test ::placeholder {
+  color: white;
 }
