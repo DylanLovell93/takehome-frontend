@@ -16,3 +16,22 @@
 .NewRestaurantForm #test ::placeholder {
   color: white;
 }
+
+.NewRestaurantForm .formControl {
+  max-width: 600px;
+}
+
+@media screen and (min-width: 600px) {
+  .NewRestaurantForm {
+    width: 90%;
+    padding: 15px 0px;
+    margin: 0px auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .NewRestaurantForm {
+    width: 1100px;
+    box-sizing: border-box;
+  }
+}

@@ -45,40 +45,48 @@ const NewRestaurantForm = () => {
   ];
   return (
     <Box className="NewRestaurantForm" component="form" autoComplete="off">
-      <Typography
-        variant="h5"
-        component="div"
-        sx={{ mx: "auto", color: "white" }}
-      >
-        New Restaurant
-      </Typography>
-      <div className="formControl">
-        <TextField required id="name" label="Name" variant="outlined" sx={sx} />
-      </div>
-      <div className="formControl">
-        <TextField
-          required
-          id="description"
-          label="Description"
-          variant="outlined"
-          sx={sx}
-        />
-      </div>
-      <div className="formControl">
-        <TextField
-          required
-          select
-          id="price"
-          label="Price"
-          variant="outlined"
-          sx={sx}
+      <div>
+        <Typography
+          variant="h5"
+          component="div"
+          sx={{ mx: "auto", color: "white" }}
         >
-          {options.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
+          New Restaurant
+        </Typography>
+        <div className="formControl">
+          <TextField
+            required
+            id="name"
+            label="Name"
+            variant="outlined"
+            sx={sx}
+          />
+        </div>
+        <div className="formControl">
+          <TextField
+            required
+            id="description"
+            label="Description"
+            variant="outlined"
+            sx={sx}
+          />
+        </div>
+        <div className="formControl">
+          <TextField
+            required
+            select
+            id="price"
+            label="Price"
+            variant="outlined"
+            sx={sx}
+          >
+            {options.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </div>
       </div>
     </Box>
   );
