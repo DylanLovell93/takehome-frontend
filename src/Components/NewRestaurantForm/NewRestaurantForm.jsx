@@ -1,6 +1,9 @@
 import "./NewRestaurantForm.css";
 import React from "react";
 import { Box, Typography, TextField, MenuItem } from "@mui/material";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 
 const NewRestaurantForm = () => {
   const sx = {
@@ -36,6 +39,9 @@ const NewRestaurantForm = () => {
         borderWidth: "1.5px",
       },
     },
+    ".MuiSelect-icon": {
+      color: "white",
+    },
   };
 
   const options = [
@@ -45,7 +51,7 @@ const NewRestaurantForm = () => {
   ];
   return (
     <Box className="NewRestaurantForm" component="form" autoComplete="off">
-      <div>
+      <div className="inputWrapper">
         <Typography
           variant="h5"
           component="div"
@@ -86,6 +92,36 @@ const NewRestaurantForm = () => {
               </MenuItem>
             ))}
           </TextField>
+        </div>
+        <div className="formControl">
+          <TextField
+            required
+            id="cuisine"
+            label="Cuisine"
+            variant="outlined"
+            sx={sx}
+          />
+        </div>
+        <div className="formControl">
+          <TextField
+            required
+            id="location"
+            label="Location"
+            variant="outlined"
+            sx={sx}
+          />
+        </div>
+        <div className="formControl">
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <TimePicker
+              label="Basic example"
+              value={value}
+              onChange={(newValue) => {
+                setValue(newValue);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
         </div>
       </div>
     </Box>
