@@ -1,6 +1,6 @@
 import "./NewRestaurantForm.css";
 import React, { useState } from "react";
-import { Box, Typography, TextField, MenuItem } from "@mui/material";
+import { Box, Typography, TextField, MenuItem, Button } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
@@ -256,6 +256,21 @@ const NewRestaurantForm = () => {
             />
           </div>
         </div>
+      </div>
+      <div className="buttonContainer">
+        <Button
+          variant="contained"
+          sx={{
+            ml: "auto",
+            background: "#484848",
+            "&:hover": {
+              background: "#363636",
+            },
+          }}
+          type="submit"
+        >
+          Create Restaurant
+        </Button>
       </div>
     </Box>
   );

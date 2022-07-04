@@ -28,6 +28,11 @@
   margin: 0px auto;
 }
 
+.NewRestaurantForm .buttonContainer {
+  width: 100%;
+  display: flex;
+}
+
 @media screen and (min-width: 600px) {
   .NewRestaurantForm {
     width: 90%;
