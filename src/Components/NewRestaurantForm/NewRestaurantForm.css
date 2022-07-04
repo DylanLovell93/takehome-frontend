@@ -22,6 +22,12 @@
   max-width: 600px;
 }
 
+.NewRestaurantForm .tableContainer {
+  padding: 0px 30px;
+  max-width: 600px;
+  margin: 0px auto;
+}
+
 @media screen and (min-width: 600px) {
   .NewRestaurantForm {
     width: 90%;

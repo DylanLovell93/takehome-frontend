@@ -34,11 +34,14 @@ const formSx = {
   ".MuiSelect-icon": {
     color: "white",
   },
+  ".MuiOutlinedInput-notchedOutline": {
+    borderColor: "white",
+  },
+  "& .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused": {
+    "& fieldset": {
+      borderColor: "white",
+    },
+  },
 };
 
-const timeSx = {
-  mx: "auto",
-  flexGrow: 1,
-};
-
-export { formSx, timeSx };
+export { formSx };

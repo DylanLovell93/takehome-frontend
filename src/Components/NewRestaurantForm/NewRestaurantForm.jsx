@@ -5,29 +5,47 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { formSx } from "../Styles/MuiFormStyle";
-import PhoneNumberMask from "../../helper/imask";
+import { PhoneNumberMask, NumberInputMask } from "../../helper/imask";
 
 const NewRestaurantForm = () => {
   const [value, setValue] = useState({
     name: "",
     phoneNumber: "",
     description: "",
-    price: "",
+    price: "$",
     cuisine: "",
     location: "",
     openingTime: "",
     closingTime: "",
+    diningRestriction: "none",
+    tables: {
+      twoPersonTables: "",
+      fourPersonTables: "",
+      eightPersonTables: "",
+    },
   });
 
-  const options = [
+  const priceOptions = [
     { value: "$", label: "$" },
     { value: "$$", label: "$$" },
     { value: "$$$", label: "$$$" },
   ];
 
+  const diningOptions = [
+    { value: "none", label: "None" },
+    { value: "Takeout Only", label: "Takeout Only" },
+    { value: "Delivery Only", label: "Delivery Only" },
+  ];
+
   const handleFormChange = (event) => {
     setValue({ ...value, [event.target.name]: event.target.value });
-    console.log(value);
+  };
+
+  const handleTableChange = (event) => {
+    setValue({
+      ...value,
+      tables: { ...value.tables, [event.target.name]: event.target.value },
+    });
   };
 
   return (
@@ -90,7 +108,7 @@ const NewRestaurantForm = () => {
             onChange={handleFormChange}
             value={value.price}
           >
-            {options.map((option) => (
+            {priceOptions.map((option) => (
               <MenuItem key={option.value} value={option.value}>
                 {option.label}
               </MenuItem>
@@ -166,6 +184,77 @@ const NewRestaurantForm = () => {
               )}
             />
           </LocalizationProvider>
+        </div>
+        <div className="formControl">
+          <TextField
+            select
+            name="diningRestriction"
+            id="diningRestriction"
+            label="Dining Restriction"
+            variant="outlined"
+            sx={formSx}
+            onChange={handleFormChange}
+            value={value.diningRestriction}
+          >
+            {diningOptions.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </div>
+        <div className="formControl">
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ mr: "auto", color: "white" }}
+          >
+            Tables
+          </Typography>
+        </div>
+        <div className="tableContainer">
+          <div className="formControl">
+            <TextField
+              name="twoPersonTables"
+              id="twoPersonTables"
+              label="Two Person"
+              variant="outlined"
+              sx={formSx}
+              value={value.tables.twoPersonTables}
+              onChange={handleTableChange}
+              InputProps={{
+                inputComponent: NumberInputMask,
+              }}
+            />
+          </div>
+          <div className="formControl">
+            <TextField
+              name="fourPersonTables"
+              id="fourPersonTables"
+              label="Four Person"
+              variant="outlined"
+              sx={formSx}
+              value={value.tables.fourPersonTables}
+              onChange={handleTableChange}
+              InputProps={{
+                inputComponent: NumberInputMask,
+              }}
+            />
+          </div>
+          <div className="formControl">
+            <TextField
+              name="eightPersonTables"
+              id="eightPersonTables"
+              label="Eight Person"
+              variant="outlined"
+              sx={formSx}
+              value={value.tables.eightPersonTables}
+              onChange={handleTableChange}
+              InputProps={{
+                inputComponent: NumberInputMask,
+              }}
+            />
+          </div>
         </div>
       </div>
     </Box>

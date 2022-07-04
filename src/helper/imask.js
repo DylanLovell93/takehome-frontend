@@ -1,5 +1,6 @@
 import { IMaskInput } from "react-imask";
 import { forwardRef } from "react";
+import NumberFormat from "react-number-format";
 
 const PhoneNumberMask = forwardRef(function PhoneNumberMask(props, ref) {
   const { onChange, ...other } = props;
@@ -17,4 +18,26 @@ const PhoneNumberMask = forwardRef(function PhoneNumberMask(props, ref) {
   );
 });
 
-export default PhoneNumberMask;
+const NumberInputMask = forwardRef(function NumberInputMask(props, ref) {
+  const { onChange, ...other } = props;
+
+  return (
+    <NumberFormat
+      {...other}
+      getInputRef={ref}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      isNumericString
+      allowNegative={false}
+      decimalScale={0}
+    />
+  );
+});
+
+export { PhoneNumberMask, NumberInputMask };
