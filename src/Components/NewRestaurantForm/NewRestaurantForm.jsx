@@ -6,8 +6,13 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { formSx } from "../Styles/MuiFormStyle";
 import { PhoneNumberMask, NumberInputMask } from "../../helper/imask";
+import { validateNewRestaurant } from "../../helper/bodyValidaion";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const NewRestaurantForm = () => {
+  const URL = process.env.REACT_APP_API_URL;
+  const nav = useNavigate();
   const [value, setValue] = useState({
     name: "",
     phoneNumber: "",
@@ -48,8 +53,26 @@ const NewRestaurantForm = () => {
     });
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const newRestaurant = await axios.post(
+        `${URL}api/restaurants`,
+        validateNewRestaurant(value)
+      );
+      nav(`/restaurants/${newRestaurant.data.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <Box className="NewRestaurantForm" component="form" autoComplete="off">
+    <Box
+      className="NewRestaurantForm"
+      component="form"
+      autoComplete="off"
+      onSubmit={handleSubmit}
+    >
       <div className="inputWrapper">
         <Typography
           variant="h5"
