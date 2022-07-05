@@ -39,7 +39,7 @@ const NavBar = React.forwardRef((props, ref) => {
         position="static"
         sx={{ backgroundColor: "#202020", width: "100%" }}
       >
-        <Toolbar className="toolbar" sx={{ "max-width": "700px" }}>
+        <Toolbar className="toolbar" sx={{ maxWidth: "700px" }}>
           <IconButton
             size="large"
             edge="start"

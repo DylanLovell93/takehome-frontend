@@ -1,9 +1,17 @@
 .NewRestaurantForm {
   background-color: #181818;
   height: 100%;
+  width: 100%;
   margin: 0px auto;
   box-sizing: border-box;
   padding: 15px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.NewRestaurantForm::-webkit-scrollbar {
+  display: none;
 }
 
 .NewRestaurantForm .formControl {
@@ -19,6 +27,17 @@
 
 .NewRestaurantForm .formControl {
   max-width: 600px;
+}
+
+.NewRestaurantForm .tableContainer {
+  padding: 0px 30px;
+  max-width: 600px;
+  margin: 0px auto;
+}
+
+.NewRestaurantForm .buttonContainer {
+  width: 100%;
+  display: flex;
 }
 
 @media screen and (min-width: 600px) {
