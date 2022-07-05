@@ -1,6 +1,6 @@
 import "./RestaurantInfo.css";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   Card,
@@ -10,12 +10,14 @@ import {
   Typography,
   Button,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { formatPhoneNumber, formatTime } from "../../helper/stringManipulation";
 
 const RestaurantInfo = ({ mobile }) => {
   const [restaurant, setRestaurant] = useState({});
   const { id } = useParams();
   const URL = process.env.REACT_APP_API_URL;
+  const nav = useNavigate();
 
   useEffect(() => {
     const getRestaurant = async () => {
@@ -35,6 +37,11 @@ const RestaurantInfo = ({ mobile }) => {
     closingTime,
     description,
   } = restaurant;
+
+  const handleDelete = async () => {
+    const deletedRestaurant = await axios.delete(`${URL}api/restaurants/${id}`);
+    nav("/restaurants");
+  };
 
   return (
     <Card
@@ -91,8 +98,17 @@ const RestaurantInfo = ({ mobile }) => {
         <CardActions>
           <Button
             variant="contained"
-            size="small"
-            sx={{ ml: "auto", width: 250, height: 50 }}
+            color="error"
+            size="large"
+            sx={{ mr: "auto", width: "60px" }}
+            onClick={handleDelete}
+          >
+            <CloseIcon />
+          </Button>
+          <Button
+            variant="contained"
+            size="large"
+            sx={{ ml: "auto", width: 250 }}
           >
             Make Reservation
           </Button>
