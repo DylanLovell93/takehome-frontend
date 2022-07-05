@@ -102,6 +102,7 @@ const NewRestaurantForm = () => {
             sx={formSx}
             onChange={handleFormChange}
             value={value.phoneNumber}
+            inputProps={{ minLength: "14" }}
             InputProps={{
               inputComponent: PhoneNumberMask,
             }}

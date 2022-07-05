@@ -40,7 +40,6 @@ const validateNewRestaurant = (formData) => {
     diningRestriction,
   };
   if (tables) formattedBody.tables = tables;
-  console.log(formattedBody);
   return formattedBody;
 };
 
