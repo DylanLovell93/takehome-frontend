@@ -43,4 +43,77 @@ const validateNewRestaurant = (formData) => {
   return formattedBody;
 };
 
-export { validateNewRestaurant };
+const restaurantDataToForm = (restData) => {
+  const tables = restData.tables
+    ? restData.tables
+    : { twoPersonTables: 0, fourPersonTables: 0, eightPersonTables: 0 };
+
+  const diningRestriction = restData.diningRestriction
+    ? restData.diningRestriction
+    : "none";
+
+  const openingArr = restData.openingTime.split(":").map((e) => Number(e));
+  const closingArr = restData.closingTime.split(":").map((e) => Number(e));
+
+  const openingTime = new Date(Date.now());
+  const closingTime = new Date(Date.now());
+
+  openingTime.setHours(openingArr[0]);
+  openingTime.setMinutes(openingArr[1]);
+  openingTime.setSeconds(openingArr[2]);
+
+  closingTime.setHours(closingArr[0]);
+  closingTime.setMinutes(closingArr[1]);
+  closingTime.setSeconds(closingArr[2]);
+
+  const { name, description, phoneNumber, price, cuisine, location } = restData;
+
+  return {
+    name,
+    description,
+    phoneNumber,
+    price,
+    cuisine,
+    location,
+    tables,
+    diningRestriction,
+    openingTime,
+    closingTime,
+  };
+};
+
+const formDataToPatch = (formData, restaurantData) => {
+  formData = validateNewRestaurant(formData);
+  formData.tables = formData.tables ? formData.tables : null;
+  const changedKeys = [];
+
+  for (const key in formData) {
+    if (key === "tables" && typeof key === "object") {
+      if (
+        Number(formData[key].twoPersonTables) !==
+          restaurantData[key].twoPersonTables ||
+        Number(formData[key].fourPersonTables) !==
+          restaurantData[key].fourPersonTables ||
+        Number(formData[key].eightPersonTables) !==
+          restaurantData[key].eightPersonTables
+      ) {
+        changedKeys.push(key);
+      }
+    } else if (formData[key] !== restaurantData[key]) {
+      changedKeys.push(key);
+    }
+  }
+
+  const patchObj = changedKeys.reduce((acc, val) => {
+    return { ...acc, [val]: formData[val] };
+  }, {});
+
+  if (JSON.stringify(patchObj) === "{}") {
+    alert("No edits were made");
+    throw "No edits were made";
+  } else {
+    return patchObj;
+  }
+};
+
+export { validateNewRestaurant, restaurantDataToForm, formDataToPatch };
