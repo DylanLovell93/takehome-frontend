@@ -34,7 +34,7 @@ const RestaurantCard = ({ data }) => {
         image="https://dreamworldtravel.co.uk/assets/img/img-not-found-01.jpg"
         alt={`${name}'s image`}
       />
-      <CardContent>
+      <CardContent sx={{ mb: "auto" }}>
         <Typography
           gutterBottom
           variant="h5"
@@ -77,7 +77,7 @@ const RestaurantCard = ({ data }) => {
             },
           }}
         >
-          Make a Reservation
+          Make Reservation
         </Button>
       </CardActions>
     </Card>

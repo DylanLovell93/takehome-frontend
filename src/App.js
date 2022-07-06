@@ -7,6 +7,7 @@ import NewRestaurant from "./Pages/NewRestaurant/NewRestaurant";
 import SingleRestaurant from "./Pages/SingleRestaurant/SingleRestaurant";
 import Reservations from "./Pages/Reservations/Reservations";
 import SingleReservation from "./Pages/SingleReservation/SingleReservation";
+import UpdateRestaurant from "./Pages/UpdateRestaurant/UpdateRestaurant";
 
 const App = () => {
   const mobileQuery = window.matchMedia("(max-width: 600px)");
@@ -21,12 +22,16 @@ const App = () => {
         <Route exact path="/" element={<LandingPage mobile={mobile} />} />
         <Route path="/restaurants" element={<Restaurants mobile={mobile} />} />
         <Route
-          path="/newRestaurant"
-          element={<NewRestaurant mobile={mobile} />}
-        />
-        <Route
           path="/restaurants/:id"
           element={<SingleRestaurant mobile={mobile} />}
+        />
+        <Route
+          path="/restaurants/:id/edit"
+          element={<UpdateRestaurant mobile={mobile} />}
+        />
+        <Route
+          path="/newRestaurant"
+          element={<NewRestaurant mobile={mobile} />}
         />
         <Route
           path="/reservations"

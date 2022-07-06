@@ -1,6 +1,6 @@
 import "./RestaurantInfo.css";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   Card,
@@ -10,12 +10,15 @@ import {
   Typography,
   Button,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import EditIcon from "@mui/icons-material/Edit";
 import { formatPhoneNumber, formatTime } from "../../helper/stringManipulation";
 
 const RestaurantInfo = ({ mobile }) => {
   const [restaurant, setRestaurant] = useState({});
   const { id } = useParams();
   const URL = process.env.REACT_APP_API_URL;
+  const nav = useNavigate();
 
   useEffect(() => {
     const getRestaurant = async () => {
@@ -35,6 +38,11 @@ const RestaurantInfo = ({ mobile }) => {
     closingTime,
     description,
   } = restaurant;
+
+  const handleDelete = async () => {
+    await axios.delete(`${URL}api/restaurants/${id}`);
+    nav("/restaurants");
+  };
 
   return (
     <Card
@@ -88,11 +96,29 @@ const RestaurantInfo = ({ mobile }) => {
         >
           {description}
         </Typography>
-        <CardActions>
+        <CardActions sx={{ p: 0 }}>
           <Button
             variant="contained"
-            size="small"
-            sx={{ ml: "auto", width: 250, height: 50 }}
+            color="error"
+            size="large"
+            sx={{ mr: 1, width: "60px" }}
+            onClick={handleDelete}
+          >
+            <CloseIcon />
+          </Button>
+          <Button
+            variant="contained"
+            color="success"
+            size="large"
+            sx={{ mr: "auto", width: "60px" }}
+            href={`/restaurants/${id}/edit`}
+          >
+            <EditIcon />
+          </Button>
+          <Button
+            variant="contained"
+            size="large"
+            sx={{ ml: "auto", width: 250 }}
           >
             Make Reservation
           </Button>

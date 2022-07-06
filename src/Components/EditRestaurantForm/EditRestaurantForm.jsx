@@ -1,18 +1,23 @@
-import "./NewRestaurantForm.css";
-import React, { useState } from "react";
+import "./EditRestaurantForm.css";
+import React, { useState, useEffect } from "react";
 import { Box, Typography, TextField, MenuItem, Button } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { formSx } from "../Styles/MuiFormStyle";
 import { PhoneNumberMask, NumberInputMask } from "../../helper/imask";
-import { validateNewRestaurant } from "../../helper/bodyValidaion";
+import {
+  formDataToPatch,
+  restaurantDataToForm,
+} from "../../helper/bodyValidaion";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const NewRestaurantForm = () => {
+const EditRestaurantForm = () => {
   const URL = process.env.REACT_APP_API_URL;
   const nav = useNavigate();
+  const { id } = useParams();
+  const [restaurant, setRestaurant] = useState({});
   const [value, setValue] = useState({
     name: "",
     phoneNumber: "",
@@ -56,17 +61,26 @@ const NewRestaurantForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const newRestaurant = await axios.post(
-        `${URL}api/restaurants`,
-        validateNewRestaurant(value)
+      await axios.patch(
+        `${URL}api/restaurants/${id}`,
+        formDataToPatch(value, restaurant)
       );
-      nav(`/restaurants/${newRestaurant.data.id}`);
+      nav(`/restaurants/${id}`);
     } catch (err) {}
   };
 
+  useEffect(() => {
+    const prefillForm = async () => {
+      const currentRestaurant = await axios.get(`${URL}api/restaurants/${id}`);
+      setRestaurant(currentRestaurant.data);
+      setValue(restaurantDataToForm(currentRestaurant.data));
+    };
+    prefillForm();
+  }, [URL, id]);
+
   return (
     <Box
-      className="NewRestaurantForm"
+      className="EditRestaurantForm"
       component="form"
       autoComplete="off"
       onSubmit={handleSubmit}
@@ -77,7 +91,7 @@ const NewRestaurantForm = () => {
           component="div"
           sx={{ mx: "auto", color: "white" }}
         >
-          New Restaurant
+          Update Restaurant
         </Typography>
         <div className="formControl">
           <TextField
@@ -291,11 +305,11 @@ const NewRestaurantForm = () => {
           }}
           type="submit"
         >
-          Create Restaurant
+          Update
         </Button>
       </div>
     </Box>
   );
 };
 
-export default NewRestaurantForm;
+export default EditRestaurantForm;
