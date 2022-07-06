@@ -77,7 +77,7 @@ const RestaurantCard = ({ data }) => {
             },
           }}
         >
-          Make a Reservation
+          Make Reservation
         </Button>
       </CardActions>
     </Card>

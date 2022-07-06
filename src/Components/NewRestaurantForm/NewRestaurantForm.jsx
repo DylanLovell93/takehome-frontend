@@ -61,9 +61,7 @@ const NewRestaurantForm = () => {
         validateNewRestaurant(value)
       );
       nav(`/restaurants/${newRestaurant.data.id}`);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (

@@ -65,10 +65,8 @@ const EditRestaurantForm = () => {
         `${URL}api/restaurants/${id}`,
         formDataToPatch(value, restaurant)
       );
-      nav(`/restaurants/${newRestaurant.data.id}`);
-    } catch (err) {
-      console.log(err);
-    }
+      nav(`/restaurants/${id}`);
+    } catch (err) {}
   };
 
   useEffect(() => {

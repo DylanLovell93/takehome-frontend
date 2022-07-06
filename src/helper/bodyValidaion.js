@@ -66,11 +66,54 @@ const restaurantDataToForm = (restData) => {
   closingTime.setMinutes(closingArr[1]);
   closingTime.setSeconds(closingArr[2]);
 
-  return { ...restData, tables, diningRestriction, openingTime, closingTime };
+  const { name, description, phoneNumber, price, cuisine, location } = restData;
+
+  return {
+    name,
+    description,
+    phoneNumber,
+    price,
+    cuisine,
+    location,
+    tables,
+    diningRestriction,
+    openingTime,
+    closingTime,
+  };
 };
 
-const formDataToPatch = (formData) => {
-  return formData;
+const formDataToPatch = (formData, restaurantData) => {
+  formData = validateNewRestaurant(formData);
+  formData.tables = formData.tables ? formData.tables : null;
+  const changedKeys = [];
+
+  for (const key in formData) {
+    if (key === "tables" && typeof key === "object") {
+      if (
+        Number(formData[key].twoPersonTables) !==
+          restaurantData[key].twoPersonTables ||
+        Number(formData[key].fourPersonTables) !==
+          restaurantData[key].fourPersonTables ||
+        Number(formData[key].eightPersonTables) !==
+          restaurantData[key].eightPersonTables
+      ) {
+        changedKeys.push(key);
+      }
+    } else if (formData[key] !== restaurantData[key]) {
+      changedKeys.push(key);
+    }
+  }
+
+  const patchObj = changedKeys.reduce((acc, val) => {
+    return { ...acc, [val]: formData[val] };
+  }, {});
+
+  if (JSON.stringify(patchObj) === "{}") {
+    alert("No edits were made");
+    throw "No edits were made";
+  } else {
+    return patchObj;
+  }
 };
 
 export { validateNewRestaurant, restaurantDataToForm, formDataToPatch };
