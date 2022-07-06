@@ -11,6 +11,7 @@ import {
   Button,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import EditIcon from "@mui/icons-material/Edit";
 import { formatPhoneNumber, formatTime } from "../../helper/stringManipulation";
 
 const RestaurantInfo = ({ mobile }) => {
@@ -95,15 +96,24 @@ const RestaurantInfo = ({ mobile }) => {
         >
           {description}
         </Typography>
-        <CardActions>
+        <CardActions sx={{ p: 0 }}>
           <Button
             variant="contained"
             color="error"
             size="large"
-            sx={{ mr: "auto", width: "60px" }}
+            sx={{ mr: 1, width: "60px" }}
             onClick={handleDelete}
           >
             <CloseIcon />
+          </Button>
+          <Button
+            variant="contained"
+            color="success"
+            size="large"
+            sx={{ mr: "auto", width: "60px" }}
+            href={`/restaurants/${id}/edit`}
+          >
+            <EditIcon />
           </Button>
           <Button
             variant="contained"
