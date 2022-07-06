@@ -110,7 +110,7 @@ const formDataToPatch = (formData, restaurantData) => {
 
   if (JSON.stringify(patchObj) === "{}") {
     alert("No edits were made");
-    throw "No edits were made";
+    throw new Error("No edits were made");
   } else {
     return patchObj;
   }

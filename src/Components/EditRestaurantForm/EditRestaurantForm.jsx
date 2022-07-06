@@ -61,7 +61,7 @@ const EditRestaurantForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const newRestaurant = await axios.patch(
+      await axios.patch(
         `${URL}api/restaurants/${id}`,
         formDataToPatch(value, restaurant)
       );
