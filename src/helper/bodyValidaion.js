@@ -43,4 +43,34 @@ const validateNewRestaurant = (formData) => {
   return formattedBody;
 };
 
-export { validateNewRestaurant };
+const restaurantDataToForm = (restData) => {
+  const tables = restData.tables
+    ? restData.tables
+    : { twoPersonTables: 0, fourPersonTables: 0, eightPersonTables: 0 };
+
+  const diningRestriction = restData.diningRestriction
+    ? restData.diningRestriction
+    : "none";
+
+  const openingArr = restData.openingTime.split(":").map((e) => Number(e));
+  const closingArr = restData.closingTime.split(":").map((e) => Number(e));
+
+  const openingTime = new Date(Date.now());
+  const closingTime = new Date(Date.now());
+
+  openingTime.setHours(openingArr[0]);
+  openingTime.setMinutes(openingArr[1]);
+  openingTime.setSeconds(openingArr[2]);
+
+  closingTime.setHours(closingArr[0]);
+  closingTime.setMinutes(closingArr[1]);
+  closingTime.setSeconds(closingArr[2]);
+
+  return { ...restData, tables, diningRestriction, openingTime, closingTime };
+};
+
+const formDataToPatch = (formData) => {
+  return formData;
+};
+
+export { validateNewRestaurant, restaurantDataToForm, formDataToPatch };

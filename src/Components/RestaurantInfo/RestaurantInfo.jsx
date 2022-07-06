@@ -40,7 +40,7 @@ const RestaurantInfo = ({ mobile }) => {
   } = restaurant;
 
   const handleDelete = async () => {
-    const deletedRestaurant = await axios.delete(`${URL}api/restaurants/${id}`);
+    await axios.delete(`${URL}api/restaurants/${id}`);
     nav("/restaurants");
   };
 
