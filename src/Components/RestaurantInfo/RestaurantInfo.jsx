@@ -124,6 +124,9 @@ const RestaurantInfo = ({ mobile }) => {
           </Button>
         </CardActions>
       </CardContent>
+      {restaurant.reservations?.map((e, i) =>
+        e ? <div key={i + "reserv"}>Testing</div> : null
+      )}
     </Card>
   );
 };
