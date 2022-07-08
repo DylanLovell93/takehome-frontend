@@ -13,6 +13,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
 import { formatPhoneNumber, formatTime } from "../../helper/stringManipulation";
+import RestaurantResCard from "../RestaurantResCard/RestaurantResCard";
 
 const RestaurantInfo = ({ mobile }) => {
   const [restaurant, setRestaurant] = useState({});
@@ -123,10 +124,21 @@ const RestaurantInfo = ({ mobile }) => {
             Make Reservation
           </Button>
         </CardActions>
+        <div className="resCardContainer">
+          {restaurant.reservations && restaurant.reservations[0] && (
+            <Typography
+              variant="h5"
+              component="div"
+              sx={{ mx: "auto", width: "100%", color: "white" }}
+            >
+              Reservations
+            </Typography>
+          )}
+          {restaurant.reservations?.map((e, i) =>
+            e ? <RestaurantResCard key={"resCard" + i} resData={e} /> : null
+          )}
+        </div>
       </CardContent>
-      {restaurant.reservations?.map((e, i) =>
-        e ? <div key={i + "reserv"}>Testing</div> : null
-      )}
     </Card>
   );
 };

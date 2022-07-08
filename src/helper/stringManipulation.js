@@ -15,4 +15,14 @@ const formatTime = (time) => {
   return timeArr.slice(0, 2).join(":") + timeArr[2];
 };
 
-export { formatPhoneNumber, formatTime };
+const formatTimeAndDate = (timeAndDate) => {
+  const dateObj = new Date(timeAndDate);
+  const time = [
+    dateObj.getHours().toString().padEnd(2, "0"),
+    dateObj.getMinutes().toString().padEnd(2, "0"),
+    dateObj.getSeconds().toString().padEnd(2, "0"),
+  ];
+  return dateObj.toDateString() + ", " + formatTime(time.join(":"));
+};
+
+export { formatPhoneNumber, formatTime, formatTimeAndDate };
