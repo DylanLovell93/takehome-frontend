@@ -14,6 +14,10 @@
   border-bottom: solid 1px rgba(255, 255, 255, 0.2);
 }
 
+.RestaurantInfo .resCardContainer {
+  margin-top: 10px;
+}
+
 @media screen and (min-width: 600px) {
   .RestaurantInfo {
     width: 90%;
