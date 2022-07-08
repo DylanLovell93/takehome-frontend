@@ -12,12 +12,9 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
 
-import {
-  formatPhoneNumber,
-  formatTimeAndDate,
-} from "../../helper/stringManipulation";
+import { formatTimeAndDate } from "../../helper/stringManipulation";
 
-const RestaurantResCard = ({ resData }) => {
+const RestaurantResCard = ({ reservationData, restaurantData }) => {
   return (
     <Card
       className="RestaurantResCard"
@@ -25,20 +22,18 @@ const RestaurantResCard = ({ resData }) => {
     >
       <CardContent>
         <Typography variant="h6" sx={{ color: "white" }}>
-          {resData.firstName + " " + resData.lastName}
+          {reservationData.firstName + " " + reservationData.lastName}
+        </Typography>
+        {restaurantData ? (
+          <Typography sx={{ fontSize: 14, color: "white" }}>
+            Restaurant Name: {restaurantData.name}
+          </Typography>
+        ) : null}
+        <Typography sx={{ fontSize: 14, color: "white" }}>
+          # of Guest: {reservationData.numGuests}
         </Typography>
         <Typography sx={{ fontSize: 14, color: "white" }}>
-          # of Guest: {resData.numGuests}
-        </Typography>
-        <Typography sx={{ fontSize: 14, color: "white" }}>
-          {"Date & Time"}: {formatTimeAndDate(resData.time)}
-        </Typography>
-        <Typography sx={{ fontSize: 14, color: "white" }}>
-          Phone Number:{" "}
-          {resData.phoneNumber ? formatPhoneNumber(resData.phoneNumber) : "N/A"}
-        </Typography>
-        <Typography sx={{ fontSize: 14, color: "white" }}>
-          Email: {resData.email ? resData.email : "N/A"}
+          {"Date & Time"}: {formatTimeAndDate(reservationData.time)}
         </Typography>
       </CardContent>
       <CardActions>
@@ -51,7 +46,7 @@ const RestaurantResCard = ({ resData }) => {
         <Button
           size="small"
           variant="contained"
-          href={`/reservations/${resData.id}`}
+          href={`/reservations/${reservationData.id}`}
           sx={{
             backgroundColor: "#484848",
             "&:hover": {

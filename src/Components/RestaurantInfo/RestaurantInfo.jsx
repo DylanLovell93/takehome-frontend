@@ -135,7 +135,9 @@ const RestaurantInfo = ({ mobile }) => {
             </Typography>
           )}
           {restaurant.reservations?.map((e, i) =>
-            e ? <RestaurantResCard key={"resCard" + i} resData={e} /> : null
+            e ? (
+              <RestaurantResCard key={"resCard" + i} reservationData={e} />
+            ) : null
           )}
         </div>
       </CardContent>
