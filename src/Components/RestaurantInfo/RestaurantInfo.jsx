@@ -17,6 +17,7 @@ import ReservationCard from "../ReservationCard/ReservationCard";
 
 const RestaurantInfo = ({ mobile }) => {
   const [restaurant, setRestaurant] = useState({});
+  const [reset, setReset] = useState(false);
   const { id } = useParams();
   const URL = process.env.REACT_APP_API_URL;
   const nav = useNavigate();
@@ -27,7 +28,7 @@ const RestaurantInfo = ({ mobile }) => {
       setRestaurant(res.data);
     };
     getRestaurant();
-  }, [URL, id]);
+  }, [URL, id, reset]);
 
   const {
     name,
@@ -39,6 +40,10 @@ const RestaurantInfo = ({ mobile }) => {
     closingTime,
     description,
   } = restaurant;
+
+  const resetFunction = () => {
+    setReset(!reset);
+  };
 
   const handleDelete = async () => {
     await axios.delete(`${URL}api/restaurants/${id}`);
@@ -136,7 +141,11 @@ const RestaurantInfo = ({ mobile }) => {
           )}
           {restaurant.reservations?.map((e, i) =>
             e ? (
-              <ReservationCard key={"resCard" + i} reservationData={e} />
+              <ReservationCard
+                key={"resCard" + i}
+                reservationData={e}
+                resetFunction={resetFunction}
+              />
             ) : null
           )}
         </div>
