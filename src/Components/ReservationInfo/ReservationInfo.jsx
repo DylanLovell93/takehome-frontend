@@ -36,7 +36,10 @@ const ReservationInfo = ({ mobile }) => {
     getReservationAndRestaurant();
   }, [URL, id]);
 
-  const handleDelete = async () => {};
+  const handleDelete = async () => {
+    await axios.delete(`${URL}api/reservations/${id}`);
+    nav("/restaurants");
+  };
 
   return (
     <Card

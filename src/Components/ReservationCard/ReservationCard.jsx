@@ -16,7 +16,7 @@ import axios from "axios";
 
 import { formatTimeAndDate } from "../../helper/stringManipulation";
 
-const ReservationCard = ({ reservationData, variant }) => {
+const ReservationCard = ({ reservationData, variant, resetFunction }) => {
   const [restaurant, setRestaurant] = useState({});
   const URL = process.env.REACT_APP_API_URL;
 
@@ -25,10 +25,15 @@ const ReservationCard = ({ reservationData, variant }) => {
       const targetRestaurant = await axios.get(
         `${URL}api/restaurants/${reservationData.restaurantId}`
       );
-      await setRestaurant(targetRestaurant.data);
+      setRestaurant(targetRestaurant.data);
     };
     getRestaurant();
   }, [URL, reservationData.restaurantId]);
+
+  const handleDelete = async () => {
+    await axios.delete(`${URL}api/reservations/${reservationData.id}`);
+    resetFunction();
+  };
 
   return (
     <Card
@@ -63,7 +68,12 @@ const ReservationCard = ({ reservationData, variant }) => {
       <CardActions>
         {variant === "allRes" ? null : (
           <>
-            <Button size="small" variant="contained" color="error">
+            <Button
+              size="small"
+              variant="contained"
+              color="error"
+              onClick={handleDelete}
+            >
               <CloseIcon />
             </Button>
             <Button size="small" variant="contained" color="success">
