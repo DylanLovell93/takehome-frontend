@@ -1,12 +1,13 @@
 import "./Reservations.css";
 import React from "react";
 import NavBar from "../../Components/NavBar/NavBar";
+import ReservationList from "../../Components/ReservationList/ReservationList";
 
 const Reservations = ({ mobile }) => {
   return (
     <div className="Reservations">
       <NavBar mobile={mobile} />
-      Reservations
+      <ReservationList mobile={mobile} />
     </div>
   );
 };
