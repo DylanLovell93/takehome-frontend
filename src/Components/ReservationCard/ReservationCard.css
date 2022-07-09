@@ -1,0 +1,18 @@
+.ReservationCard {
+  margin-top: 10px;
+}
+
+.ReservationCard .restaurantLink:hover {
+  color: #afafaf;
+}
+
+.ReservationCard .restaurantLink,
+.ReservationCard
+  .restaurantLinkL:visited
+  .ReservationCard
+  .restaurantLink::before,
+.ReservationCard .restaurantLink::after,
+.ReservationCard .restaurantLink:active {
+  color: white;
+  text-decoration: none;
+}
