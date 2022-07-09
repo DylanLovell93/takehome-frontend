@@ -1,0 +1,34 @@
+.ReservationInfo {
+  background-color: #181818;
+  height: 100%;
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.ReservationInfo::-webkit-scrollbar {
+  display: none;
+}
+
+.ReservationInfo .resTitle {
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+}
+
+.ReservationInfo .resCardContainer {
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 600px) {
+  .ReservationInfo {
+    width: 90%;
+    padding: 15px 0px;
+    margin: 0px auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .ReservationInfo {
+    width: 1100px;
+    box-sizing: border-box;
+  }
+}
