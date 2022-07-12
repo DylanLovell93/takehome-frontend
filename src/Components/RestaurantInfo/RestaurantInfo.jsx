@@ -13,9 +13,11 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
 import { formatPhoneNumber, formatTime } from "../../helper/stringManipulation";
+import ReservationCard from "../ReservationCard/ReservationCard";
 
 const RestaurantInfo = ({ mobile }) => {
   const [restaurant, setRestaurant] = useState({});
+  const [reset, setReset] = useState(false);
   const { id } = useParams();
   const URL = process.env.REACT_APP_API_URL;
   const nav = useNavigate();
@@ -26,7 +28,7 @@ const RestaurantInfo = ({ mobile }) => {
       setRestaurant(res.data);
     };
     getRestaurant();
-  }, [URL, id]);
+  }, [URL, id, reset]);
 
   const {
     name,
@@ -38,6 +40,10 @@ const RestaurantInfo = ({ mobile }) => {
     closingTime,
     description,
   } = restaurant;
+
+  const resetFunction = () => {
+    setReset(!reset);
+  };
 
   const handleDelete = async () => {
     await axios.delete(`${URL}api/restaurants/${id}`);
@@ -119,10 +125,31 @@ const RestaurantInfo = ({ mobile }) => {
             variant="contained"
             size="large"
             sx={{ ml: "auto", width: 250 }}
+            href={`/restaurants/${id}/newReservation`}
           >
             Make Reservation
           </Button>
         </CardActions>
+        <div className="resCardContainer">
+          {restaurant.reservations && restaurant.reservations[0] && (
+            <Typography
+              variant="h5"
+              component="div"
+              sx={{ mx: "auto", width: "100%", color: "white" }}
+            >
+              Reservations
+            </Typography>
+          )}
+          {restaurant.reservations?.map((e, i) =>
+            e ? (
+              <ReservationCard
+                key={"resCard" + i}
+                reservationData={e}
+                resetFunction={resetFunction}
+              />
+            ) : null
+          )}
+        </div>
       </CardContent>
     </Card>
   );

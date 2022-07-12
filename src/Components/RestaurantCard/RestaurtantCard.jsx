@@ -71,11 +71,13 @@ const RestaurantCard = ({ data }) => {
           size="small"
           variant="contained"
           sx={{
+            ml: 1,
             background: "#484848",
             "&:hover": {
               background: "#363636",
             },
           }}
+          href={`/restaurants/${id}/newReservation`}
         >
           Make Reservation
         </Button>

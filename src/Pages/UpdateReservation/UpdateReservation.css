@@ -1,11 +1,11 @@
-.Reservations {
+.UpdateReservation {
   box-sizing: border-box;
   height: calc(100% - 56px);
   width: 100%;
 }
 
 @media screen and (min-width: 600px) {
-  .Reservations {
+  .UpdateReservation {
     height: calc(100% - 64px);
   }
 }
