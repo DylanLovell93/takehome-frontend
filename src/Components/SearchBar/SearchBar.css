@@ -33,5 +33,6 @@
 }
 
 .searchModal .SearchBar {
-  margin-top: 60px;
+  margin: 60px auto;
+  width: 90%;
 }
