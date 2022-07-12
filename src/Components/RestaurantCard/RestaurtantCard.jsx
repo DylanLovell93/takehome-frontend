@@ -25,7 +25,7 @@ const RestaurantCard = ({ data }) => {
         maxWidth: 345,
         mx: "auto",
         my: 2,
-        background: "#606060",
+        background: "#303030",
       }}
     >
       <CardMedia

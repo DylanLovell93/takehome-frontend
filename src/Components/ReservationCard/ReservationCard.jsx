@@ -38,7 +38,7 @@ const ReservationCard = ({ reservationData, variant, resetFunction }) => {
   return (
     <Card
       className="ReservationCard"
-      sx={{ minWidth: 275, backgroundColor: "#606060" }}
+      sx={{ minWidth: 275, backgroundColor: "#303030" }}
     >
       <CardContent>
         <Typography variant="h6" sx={{ color: "white" }}>
