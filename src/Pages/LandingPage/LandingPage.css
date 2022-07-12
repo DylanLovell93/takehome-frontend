@@ -1,24 +1,24 @@
 .LandingPage {
   text-align: center;
-  height: calc(100vh - 54px);
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.LandingPage:hover {
+  cursor: pointer;
+}
+
 .Landing-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .Landing-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  width: 100%;
 }
 
 .Landing-header {
-  background-color: #181818;
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
@@ -26,19 +26,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media screen and (min-width: 600px) {
-  .LandingPage {
-    height: calc(100% - 64px);
-  }
 }
