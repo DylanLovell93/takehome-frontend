@@ -116,4 +116,40 @@ const formDataToPatch = (formData, restaurantData) => {
   }
 };
 
-export { validateNewRestaurant, restaurantDataToForm, formDataToPatch };
+const timeToDateObject = (timeStr) => {
+  if (!timeStr) return new Date();
+  const [hours, minutes, seconds] = timeStr.split(":");
+  const [dateHours, dateMinutes, dateSeconds] = [
+    Number(hours),
+    Number(minutes),
+    Number(seconds),
+  ];
+  return new Date(0, 0, 0, dateHours, dateMinutes, dateSeconds);
+};
+
+const dateObjToTimestamp = (dateObj) => {
+  const [year, month, day, hours, minutes, seconds, milisec] = [
+    dateObj.getFullYear().toString().padStart(4, "0"),
+    dateObj.getMonth().toString().padStart(2, "0"),
+    dateObj.getDay().toString().padStart(2, "0"),
+    dateObj.getHours().toString().padStart(2, "0"),
+    dateObj.getMinutes().toString().padStart(2, "0"),
+    dateObj.getSeconds().toString().padStart(2, "0"),
+    dateObj.getMilliseconds().toString().padStart(3, "0"),
+  ];
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milisec}Z`;
+};
+const validateNewReservation = (formData) => {
+  const { firstName, lastName, email, numGuests } = formData;
+  const phoneNumber = formData.phoneNumber.replace(/([^\d])/g, "");
+  const time = dateObjToTimestamp(formData.time);
+  return { firstName, lastName, phoneNumber, email, time, numGuests };
+};
+
+export {
+  validateNewRestaurant,
+  restaurantDataToForm,
+  formDataToPatch,
+  timeToDateObject,
+  validateNewReservation,
+};
