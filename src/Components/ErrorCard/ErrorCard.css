@@ -1,0 +1,16 @@
+.ErrorCard {
+  height: auto;
+  width: 80%;
+  padding: 30px;
+  margin: auto;
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-top: 30px;
+  max-height: 300px;
+  max-width: 1100px;
+}
+
+.ErrorCard::-webkit-scrollbar {
+  display: none;
+}
