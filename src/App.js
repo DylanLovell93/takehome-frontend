@@ -46,6 +46,7 @@ const App = () => {
           path="/reservations/:id"
           element={<SingleReservation mobile={mobile} />}
         />
+        <Route path="/reservations/:id/edit" element={<div>Test</div>} />
       </Routes>
     </div>
   );
