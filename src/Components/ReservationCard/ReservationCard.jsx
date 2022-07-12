@@ -76,7 +76,13 @@ const ReservationCard = ({ reservationData, variant, resetFunction }) => {
             >
               <CloseIcon />
             </Button>
-            <Button size="small" variant="contained" color="success">
+            <Button
+              size="small"
+              variant="contained"
+              color="success"
+              href={`/reservations/${reservationData.id}/edit`}
+              sx={{ ml: 1 }}
+            >
               <EditIcon />
             </Button>
           </>

@@ -142,8 +142,28 @@ const dateObjToTimestamp = (dateObj) => {
 const validateNewReservation = (formData) => {
   const { firstName, lastName, email, numGuests } = formData;
   const phoneNumber = formData.phoneNumber.replace(/([^\d])/g, "");
-  const time = dateObjToTimestamp(formData.time);
+  const time = dateObjToTimestamp(new Date(formData.time));
   return { firstName, lastName, phoneNumber, email, time, numGuests };
+};
+
+const reservationFormDataToPatch = (formData, reservationData) => {
+  formData = validateNewReservation(formData);
+  const changedKeys = [];
+
+  for (const key in formData) {
+    if (formData[key] !== reservationData[key]) changedKeys.push(key);
+  }
+
+  const patchObj = changedKeys.reduce((acc, val) => {
+    return { ...acc, [val]: formData[val] };
+  }, {});
+
+  if (JSON.stringify(patchObj) === "{}") {
+    alert("No edits were made");
+    throw new Error("No edits were made");
+  } else {
+    return patchObj;
+  }
 };
 
 export {
@@ -152,4 +172,5 @@ export {
   formDataToPatch,
   timeToDateObject,
   validateNewReservation,
+  reservationFormDataToPatch,
 };

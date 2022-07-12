@@ -9,6 +9,7 @@ import Reservations from "./Pages/Reservations/Reservations";
 import SingleReservation from "./Pages/SingleReservation/SingleReservation";
 import UpdateRestaurant from "./Pages/UpdateRestaurant/UpdateRestaurant";
 import NewReservation from "./Pages/NewReservation/NewReservation";
+import UpdateReservation from "./Pages/UpdateReservation/UpdateReservation";
 
 const App = () => {
   const mobileQuery = window.matchMedia("(max-width: 600px)");
@@ -45,6 +46,10 @@ const App = () => {
         <Route
           path="/reservations/:id"
           element={<SingleReservation mobile={mobile} />}
+        />
+        <Route
+          path="/reservations/:id/edit"
+          element={<UpdateReservation mobile={mobile} />}
         />
       </Routes>
     </div>

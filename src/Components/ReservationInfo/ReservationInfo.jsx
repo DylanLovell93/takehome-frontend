@@ -109,7 +109,8 @@ const ReservationInfo = ({ mobile }) => {
             variant="contained"
             color="success"
             size="large"
-            sx={{ mr: 1, width: "60px" }}
+            sx={{ ml: 1, width: "60px" }}
+            href={`/reservations/${id}/edit`}
           >
             <EditIcon />
           </Button>
