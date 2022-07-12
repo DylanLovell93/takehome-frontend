@@ -35,19 +35,25 @@ const RestaurantCard = ({ data }) => {
         alt={`${name}'s image`}
       />
       <CardContent sx={{ mb: "auto" }}>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          color="white"
-          sx={{ mb: 0 }}
-        >
-          {name} <span className="location">- {location}</span>
-        </Typography>
+        <span className="resNameAndLocation">
+          <Typography
+            gutterBottom
+            variant="h5"
+            color="white"
+            sx={{ mb: 0, display: "inline", maxWidth: "200px" }}
+          >
+            {name}
+          </Typography>
+          <span className="location">- {location}</span>
+        </span>
         <Typography variant="body2" color="white" sx={{ mb: 2 }}>
           {`Price: ${price}`}
         </Typography>
-        <Typography variant="body2" color="white" sx={{ width: "313px" }}>
+        <Typography
+          variant="body2"
+          color="white"
+          sx={{ width: 313, height: 50 }}
+        >
           {description.length > 100
             ? description.slice(0, 100) + "..."
             : description}
