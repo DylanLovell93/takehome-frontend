@@ -10,6 +10,7 @@ import SingleReservation from "./Pages/SingleReservation/SingleReservation";
 import UpdateRestaurant from "./Pages/UpdateRestaurant/UpdateRestaurant";
 import NewReservation from "./Pages/NewReservation/NewReservation";
 import UpdateReservation from "./Pages/UpdateReservation/UpdateReservation";
+import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const App = () => {
   const mobileQuery = window.matchMedia("(max-width: 600px)");
@@ -51,7 +52,7 @@ const App = () => {
           path="/reservations/:id/edit"
           element={<UpdateReservation mobile={mobile} />}
         />
-        <Route path="*" element={<div> Error </div>} />
+        <Route path="*" element={<ErrorPage mobile={mobile} />} />
       </Routes>
     </div>
   );
