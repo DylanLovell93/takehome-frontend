@@ -51,6 +51,7 @@ const App = () => {
           path="/reservations/:id/edit"
           element={<UpdateReservation mobile={mobile} />}
         />
+        <Route path="*" element={<div> Error </div>} />
       </Routes>
     </div>
   );
