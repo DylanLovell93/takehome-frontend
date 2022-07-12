@@ -1,14 +1,7 @@
 import "./NavBar.css";
-import React from "react";
-import { useState } from "react";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  Typography,
-  IconButton,
-  Modal,
-} from "@mui/material";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { AppBar, Box, Toolbar, IconButton, Modal } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import resyCloneWhite from "../../resyCloneWhite.svg";
@@ -61,7 +54,9 @@ const NavBar = React.forwardRef((props, ref) => {
               <MenuItems onClose={handleMenuClose} mobile={mobile} />
             </>
           </Modal>
-          <img src={resyCloneWhite} className="navIcon" />
+          <Link to="/restaurants" className="navIcon">
+            <img src={resyCloneWhite} className="navIconImg" />
+          </Link>
           {mobile ? (
             <>
               <IconButton

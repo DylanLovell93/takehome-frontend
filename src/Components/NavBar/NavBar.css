@@ -7,8 +7,13 @@
   justify-content: center;
 }
 
-.NavBar .navIcon {
+.NavBar .navIconImg {
   height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.NavBar .navIcon {
   margin: 0px auto;
 }
 
