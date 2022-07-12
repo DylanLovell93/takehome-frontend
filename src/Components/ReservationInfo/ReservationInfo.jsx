@@ -50,7 +50,11 @@ const ReservationInfo = ({ mobile }) => {
   return (
     <Card
       className="ReservationInfo"
-      sx={{ background: "#242424", overflow: "scroll" }}
+      sx={{
+        background: "#242424",
+        overflow: "scroll",
+        borderRadius: "0px 0px 5px 5px",
+      }}
     >
       <CardMedia
         component="img"
