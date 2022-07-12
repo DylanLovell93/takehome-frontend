@@ -7,11 +7,20 @@
   justify-content: center;
 }
 
+.NavBar .navIcon {
+  height: 50px;
+  margin: 0px auto;
+}
+
 @media screen and (min-width: 600px) {
   .NavBar .toolbar {
     min-width: 90%;
     max-width: 700px;
     margin: 0px auto;
+  }
+  .NavBar .navIcon {
+    margin: 0px;
+    margin-right: auto;
   }
 }
 

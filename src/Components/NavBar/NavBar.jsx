@@ -1,14 +1,17 @@
 import "./NavBar.css";
 import React from "react";
 import { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  IconButton,
+  Modal,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import Modal from "@mui/material/Modal";
+import resyCloneWhite from "../../resyCloneWhite.svg";
 import MenuItems from "../MenuItems/MenuItems";
 import SearchBar from "../SearchBar/SearchBar";
 
@@ -58,13 +61,7 @@ const NavBar = React.forwardRef((props, ref) => {
               <MenuItems onClose={handleMenuClose} mobile={mobile} />
             </>
           </Modal>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={mobile ? { mx: "auto" } : { ml: 2, mr: "auto" }}
-          >
-            {mobile ? "Mobile" : "Desktop"}
-          </Typography>
+          <img src={resyCloneWhite} className="navIcon" />
           {mobile ? (
             <>
               <IconButton
