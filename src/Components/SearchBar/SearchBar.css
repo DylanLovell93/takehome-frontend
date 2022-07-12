@@ -1,13 +1,18 @@
 .SearchBar {
-  background-color: #848484;
+  background-color: #303030;
   border-radius: 20px;
   padding: 0px 10px;
   display: flex;
   align-items: center;
+  border: 2px solid #303030;
+}
+
+.SearchBar:focus-within {
+  border: 2px solid #d8d8d8;
 }
 
 .SearchBar #searchInput {
-  background-color: #848484;
+  background-color: #303030;
   font-size: 1.2em;
   border: none;
   width: 100%;
@@ -20,7 +25,7 @@
 }
 
 .SearchBar #searchInput::placeholder {
-  color: white;
+  color: #848484;
 }
 
 .SearchBar #submitButton {
