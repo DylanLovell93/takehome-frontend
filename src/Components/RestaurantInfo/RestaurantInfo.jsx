@@ -133,7 +133,12 @@ const RestaurantInfo = ({ mobile }) => {
           <Button
             variant="contained"
             size="large"
-            sx={{ ml: "auto", width: 250 }}
+            sx={{
+              ml: "auto",
+              width: 250,
+              backgroundColor: "rgb(205, 127, 0)",
+              "&:hover": { backgroundColor: "rgb(147, 90, 0)" },
+            }}
             href={`/restaurants/${id}/newReservation`}
           >
             Make Reservation

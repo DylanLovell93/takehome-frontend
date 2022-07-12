@@ -54,17 +54,7 @@ const RestaurantCard = ({ data }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button
-          onClick={seeMore}
-          size="small"
-          variant="contained"
-          sx={{
-            background: "#484848",
-            "&:hover": {
-              background: "#363636",
-            },
-          }}
-        >
+        <Button onClick={seeMore} size="small" variant="contained">
           More Info
         </Button>
         <Button
@@ -72,10 +62,8 @@ const RestaurantCard = ({ data }) => {
           variant="contained"
           sx={{
             ml: 1,
-            background: "#484848",
-            "&:hover": {
-              background: "#363636",
-            },
+            backgroundColor: "rgb(205, 127, 0)",
+            "&:hover": { backgroundColor: "rgb(147, 90, 0)" },
           }}
           href={`/restaurants/${id}/newReservation`}
         >

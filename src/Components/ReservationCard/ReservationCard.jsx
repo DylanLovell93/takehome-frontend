@@ -91,12 +91,6 @@ const ReservationCard = ({ reservationData, variant, resetFunction }) => {
           size="small"
           variant="contained"
           href={`/reservations/${reservationData.id}`}
-          sx={{
-            backgroundColor: "#484848",
-            "&:hover": {
-              backgroundColor: "#363636",
-            },
-          }}
         >
           More Info
         </Button>

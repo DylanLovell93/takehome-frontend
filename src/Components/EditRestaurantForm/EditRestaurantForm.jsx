@@ -302,16 +302,13 @@ const EditRestaurantForm = () => {
       <div className="buttonContainer">
         <Button
           variant="contained"
+          color="success"
           sx={{
             ml: "auto",
-            background: "#484848",
-            "&:hover": {
-              background: "#363636",
-            },
           }}
           type="submit"
         >
-          Update
+          Update Restaurant
         </Button>
       </div>
     </Box>
