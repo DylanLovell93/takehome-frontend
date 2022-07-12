@@ -33,7 +33,9 @@ const NewReservationForm = () => {
       try {
         const targetRestaurant = await axios.get(`${URL}api/restaurants/${id}`);
         setRestaurant(targetRestaurant.data);
-      } catch (error) {}
+      } catch (error) {
+        nav("/error");
+      }
     };
     getRestaurant();
   }, [URL, id]);

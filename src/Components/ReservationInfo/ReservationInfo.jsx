@@ -26,12 +26,18 @@ const ReservationInfo = ({ mobile }) => {
 
   useEffect(() => {
     const getReservationAndRestaurant = async () => {
-      const targetReservation = await axios.get(`${URL}api/reservations/${id}`);
-      const targetRestaurant = await axios.get(
-        `${URL}api/restaurants/${targetReservation.data.restaurantId}`
-      );
-      setReservation(targetReservation.data);
-      setRestaurant(targetRestaurant.data);
+      try {
+        const targetReservation = await axios.get(
+          `${URL}api/reservations/${id}`
+        );
+        const targetRestaurant = await axios.get(
+          `${URL}api/restaurants/${targetReservation.data.restaurantId}`
+        );
+        setReservation(targetReservation.data);
+        setRestaurant(targetRestaurant.data);
+      } catch (err) {
+        nav("/error");
+      }
     };
     getReservationAndRestaurant();
   }, [URL, id]);

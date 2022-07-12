@@ -24,8 +24,12 @@ const RestaurantInfo = ({ mobile }) => {
 
   useEffect(() => {
     const getRestaurant = async () => {
-      const res = await axios.get(`${URL}api/restaurants/${id}`);
-      setRestaurant(res.data);
+      try {
+        const res = await axios.get(`${URL}api/restaurants/${id}`);
+        setRestaurant(res.data);
+      } catch (err) {
+        nav("/error");
+      }
     };
     getRestaurant();
   }, [URL, id, reset]);

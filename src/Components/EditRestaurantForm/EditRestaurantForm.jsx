@@ -71,9 +71,15 @@ const EditRestaurantForm = () => {
 
   useEffect(() => {
     const prefillForm = async () => {
-      const currentRestaurant = await axios.get(`${URL}api/restaurants/${id}`);
-      setRestaurant(currentRestaurant.data);
-      setValue(restaurantDataToForm(currentRestaurant.data));
+      try {
+        const currentRestaurant = await axios.get(
+          `${URL}api/restaurants/${id}`
+        );
+        setRestaurant(currentRestaurant.data);
+        setValue(restaurantDataToForm(currentRestaurant.data));
+      } catch (err) {
+        nav("/error");
+      }
     };
     prefillForm();
   }, [URL, id]);
