@@ -18,7 +18,7 @@ const MenuItems = React.forwardRef((props, ref) => {
   ));
   return (
     <div className="MenuItems" ref={ref}>
-      <Toolbar className="menuBar">
+      <Toolbar className="menuBar" sx={{ backgroundColor: "#202020" }}>
         <IconButton
           size="large"
           edge="start"
@@ -28,8 +28,8 @@ const MenuItems = React.forwardRef((props, ref) => {
         >
           <CloseIcon />
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ mx: "auto" }}>
-          Mobile
+        <Typography variant="h5" component="div" sx={{ mx: "auto" }}>
+          Menu
         </Typography>
         <div className="spacer"></div>
       </Toolbar>
