@@ -81,7 +81,7 @@ const ReservationCard = ({ reservationData, variant, resetFunction }) => {
               variant="contained"
               color="success"
               href={`/reservations/${reservationData.id}/edit`}
-              sx={{ ml: 1 }}
+              sx={{ ml: 1, mr: "auto" }}
             >
               <EditIcon />
             </Button>
@@ -96,7 +96,6 @@ const ReservationCard = ({ reservationData, variant, resetFunction }) => {
             "&:hover": {
               backgroundColor: "#363636",
             },
-            ml: "auto",
           }}
         >
           More Info
