@@ -125,6 +125,7 @@ const RestaurantInfo = ({ mobile }) => {
             variant="contained"
             size="large"
             sx={{ ml: "auto", width: 250 }}
+            href={`/restaurants/${id}/newReservation`}
           >
             Make Reservation
           </Button>
