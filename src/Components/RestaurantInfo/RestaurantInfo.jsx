@@ -36,7 +36,7 @@ const RestaurantInfo = ({ mobile }) => {
       }
     };
     getRestaurant();
-  }, [URL, id, reset]);
+  }, [URL, id, reset, nav]);
 
   const {
     name,
