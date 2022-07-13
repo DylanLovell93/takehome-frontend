@@ -38,7 +38,10 @@ const EditReservationForm = () => {
         const targetRestaurant = await axios.get(
           `${URL}api/restaurants/${targetReservation.data.restaurantId}`
         );
-        setValue(targetReservation.data);
+        setValue({
+          ...targetReservation.data,
+          time: new Date(targetReservation.data.time).toISOString(),
+        });
         setReservation(targetReservation.data);
         setRestaurant(targetRestaurant.data);
       } catch (error) {
