@@ -1,6 +1,6 @@
 import "./ReservationInfo.css";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import {
   Card,
@@ -64,8 +64,16 @@ const ReservationInfo = ({ mobile }) => {
         alt={`${restaurant.name}'s image`}
       />
       <CardContent id="content">
-        <Typography variant="h4" component="div" color="white" sx={{ pt: 1 }}>
-          {restaurant.name}
+        <Typography
+          variant="h4"
+          component="div"
+          color="white"
+          className="restaurantName"
+          sx={{ pt: 1 }}
+        >
+          <Link to={`/restaurants/${reservation.restaurantId}`}>
+            {restaurant.name}
+          </Link>
         </Typography>
         <Typography
           className="resTitle"
