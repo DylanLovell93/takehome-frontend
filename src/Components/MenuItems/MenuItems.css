@@ -5,6 +5,15 @@
   color: white;
 }
 
+.MenuItems .listItem {
+  display: flex;
+  align-items: center;
+}
+
+.MenuItems .listItem svg {
+  margin-right: 15px;
+}
+
 .MenuItems .spacer {
   width: 20px;
   height: 20px;
@@ -44,7 +53,8 @@
   }
 
   .MenuItems {
-    width: 300px;
+    width: auto;
+    max-width: 350px;
     height: auto;
     margin-top: 64px;
     border-radius: 0px 0px 10px 10px;
