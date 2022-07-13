@@ -82,7 +82,7 @@ const EditRestaurantForm = () => {
       }
     };
     prefillForm();
-  }, [URL, id]);
+  }, [URL, id, nav]);
 
   return (
     <Box
