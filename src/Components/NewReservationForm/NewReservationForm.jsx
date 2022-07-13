@@ -33,7 +33,9 @@ const NewReservationForm = () => {
       try {
         const targetRestaurant = await axios.get(`${URL}api/restaurants/${id}`);
         setRestaurant(targetRestaurant.data);
-      } catch (error) {}
+      } catch (error) {
+        nav("/error");
+      }
     };
     getRestaurant();
   }, [URL, id]);
@@ -166,12 +168,9 @@ const NewReservationForm = () => {
       <div className="buttonContainer">
         <Button
           variant="contained"
+          color="success"
           sx={{
             ml: "auto",
-            background: "#484848",
-            "&:hover": {
-              background: "#363636",
-            },
           }}
           type="submit"
         >

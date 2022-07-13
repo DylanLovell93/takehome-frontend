@@ -1,6 +1,6 @@
 import "./EditReservationForm.css";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -12,7 +12,6 @@ import {
   reservationFormDataToPatch,
 } from "../../helper/bodyValidaion";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const EditReservationForm = () => {
   const URL = process.env.REACT_APP_API_URL;
@@ -41,7 +40,9 @@ const EditReservationForm = () => {
         setValue(targetReservation.data);
         setReservation(targetReservation.data);
         setRestaurant(targetRestaurant.data);
-      } catch (error) {}
+      } catch (error) {
+        nav("/error");
+      }
     };
     getRestaurant();
   }, [URL, id]);
@@ -176,12 +177,9 @@ const EditReservationForm = () => {
       <div className="buttonContainer">
         <Button
           variant="contained"
+          color="success"
           sx={{
             ml: "auto",
-            background: "#484848",
-            "&:hover": {
-              background: "#363636",
-            },
           }}
           type="submit"
         >

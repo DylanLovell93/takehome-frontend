@@ -1,42 +1,26 @@
 import React from "react";
 import "./LandingPage.css";
-import logo from "../../logo.svg";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import NavBar from "../../Components/NavBar/NavBar";
+import resyCloneWhite from "../../resyCloneWhite.svg";
+import { useNavigate } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 const LandingPage = ({ mobile }) => {
-  const [status, setStatus] = useState(undefined);
-  const URL = process.env.REACT_APP_API_URL;
-
-  useEffect(() => {
-    const getStatus = async () => {
-      try {
-        const res = await axios.get(URL);
-        setStatus(res.status === 200);
-      } catch (err) {
-        setStatus(false);
-      }
-    };
-    getStatus();
-  }, [URL]);
-
+  const nav = useNavigate();
+  const handleClick = () => {
+    nav("/restaurants");
+  };
   return (
-    <>
-      <NavBar mobile={mobile} />
-      <div className="LandingPage">
-        <header className="Landing-header">
-          <img src={logo} className="Landing-logo" alt="logo" />
-          <p>
-            {status === undefined
-              ? "Loading..."
-              : status === true
-              ? "Successfully connected to express server."
-              : "Connection to express server failed."}
-          </p>
-        </header>
-      </div>
-    </>
+    <div className="LandingPage" onClick={handleClick}>
+      <header className="Landing-header">
+        <Typography variant="h4">
+          Welcome to
+          <br />
+          <img src={resyCloneWhite} className="Landing-logo" alt="logo" />
+          <br />
+          Click to enter!
+        </Typography>
+      </header>
+    </div>
   );
 };
 

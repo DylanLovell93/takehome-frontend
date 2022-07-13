@@ -38,7 +38,7 @@ const ReservationCard = ({ reservationData, variant, resetFunction }) => {
   return (
     <Card
       className="ReservationCard"
-      sx={{ minWidth: 275, backgroundColor: "#606060" }}
+      sx={{ minWidth: 275, backgroundColor: "#303030" }}
     >
       <CardContent>
         <Typography variant="h6" sx={{ color: "white" }}>
@@ -81,7 +81,7 @@ const ReservationCard = ({ reservationData, variant, resetFunction }) => {
               variant="contained"
               color="success"
               href={`/reservations/${reservationData.id}/edit`}
-              sx={{ ml: 1 }}
+              sx={{ ml: 1, mr: "auto" }}
             >
               <EditIcon />
             </Button>
@@ -91,13 +91,6 @@ const ReservationCard = ({ reservationData, variant, resetFunction }) => {
           size="small"
           variant="contained"
           href={`/reservations/${reservationData.id}`}
-          sx={{
-            backgroundColor: "#484848",
-            "&:hover": {
-              backgroundColor: "#363636",
-            },
-            ml: "auto",
-          }}
         >
           More Info
         </Button>

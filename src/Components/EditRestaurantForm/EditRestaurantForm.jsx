@@ -71,9 +71,15 @@ const EditRestaurantForm = () => {
 
   useEffect(() => {
     const prefillForm = async () => {
-      const currentRestaurant = await axios.get(`${URL}api/restaurants/${id}`);
-      setRestaurant(currentRestaurant.data);
-      setValue(restaurantDataToForm(currentRestaurant.data));
+      try {
+        const currentRestaurant = await axios.get(
+          `${URL}api/restaurants/${id}`
+        );
+        setRestaurant(currentRestaurant.data);
+        setValue(restaurantDataToForm(currentRestaurant.data));
+      } catch (err) {
+        nav("/error");
+      }
     };
     prefillForm();
   }, [URL, id]);
@@ -296,16 +302,13 @@ const EditRestaurantForm = () => {
       <div className="buttonContainer">
         <Button
           variant="contained"
+          color="success"
           sx={{
             ml: "auto",
-            background: "#484848",
-            "&:hover": {
-              background: "#363636",
-            },
           }}
           type="submit"
         >
-          Update
+          Update Restaurant
         </Button>
       </div>
     </Box>

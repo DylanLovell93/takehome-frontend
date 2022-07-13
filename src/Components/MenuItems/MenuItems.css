@@ -1,8 +1,17 @@
 .MenuItems {
   width: 100vw;
   height: 100vh;
-  background-color: #484848;
+  background-color: #181818;
   color: white;
+}
+
+.MenuItems .listItem {
+  display: flex;
+  align-items: center;
+}
+
+.MenuItems .listItem svg {
+  margin-right: 15px;
 }
 
 .MenuItems .spacer {
@@ -27,10 +36,9 @@
   text-decoration: underline solid gray 2.5px;
 }
 .MenuItems ul {
-  background-color: #484848;
+  background-color: #181818;
   list-style: none;
   padding-left: 0px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding: 10px 0px;
   margin: 0px;
 }
@@ -45,7 +53,8 @@
   }
 
   .MenuItems {
-    width: 300px;
+    width: auto;
+    max-width: 350px;
     height: auto;
     margin-top: 64px;
     border-radius: 0px 0px 10px 10px;
@@ -58,7 +67,7 @@
     display: none;
   }
   .MenuItems ul {
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 5px 5px;
     border-bottom: none;
   }
 }

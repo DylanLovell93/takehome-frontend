@@ -15,6 +15,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import {
   formatPhoneNumber,
   formatTimeAndDate,
+  uuidToRandomImageURL,
 } from "../../helper/stringManipulation";
 
 const ReservationInfo = ({ mobile }) => {
@@ -26,15 +27,21 @@ const ReservationInfo = ({ mobile }) => {
 
   useEffect(() => {
     const getReservationAndRestaurant = async () => {
-      const targetReservation = await axios.get(`${URL}api/reservations/${id}`);
-      const targetRestaurant = await axios.get(
-        `${URL}api/restaurants/${targetReservation.data.restaurantId}`
-      );
-      setReservation(targetReservation.data);
-      setRestaurant(targetRestaurant.data);
+      try {
+        const targetReservation = await axios.get(
+          `${URL}api/reservations/${id}`
+        );
+        const targetRestaurant = await axios.get(
+          `${URL}api/restaurants/${targetReservation.data.restaurantId}`
+        );
+        setReservation(targetReservation.data);
+        setRestaurant(targetRestaurant.data);
+      } catch (err) {
+        nav("/error");
+      }
     };
     getReservationAndRestaurant();
-  }, [URL, id]);
+  }, [URL, id, nav]);
 
   const handleDelete = async () => {
     await axios.delete(`${URL}api/reservations/${id}`);
@@ -44,12 +51,16 @@ const ReservationInfo = ({ mobile }) => {
   return (
     <Card
       className="ReservationInfo"
-      sx={{ background: "#242424", overflow: "scroll" }}
+      sx={{
+        background: "#242424",
+        overflow: "scroll",
+        borderRadius: "0px 0px 5px 5px",
+      }}
     >
       <CardMedia
         component="img"
         height="125"
-        image="https://dreamworldtravel.co.uk/assets/img/img-not-found-01.jpg"
+        image={uuidToRandomImageURL(reservation.restaurantId)}
         alt={`${restaurant.name}'s image`}
       />
       <CardContent id="content">
