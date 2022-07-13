@@ -1,7 +1,19 @@
 .RestaurantCard {
 }
 
+.RestaurantCard .resNameAndLocation {
+  display: flex;
+  align-items: center;
+}
+
+.RestaurantCard .resNameAndLocation h5 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .RestaurantCard .location {
+  margin-left: 5px;
   color: #cdcdcd;
   font-size: small;
 }

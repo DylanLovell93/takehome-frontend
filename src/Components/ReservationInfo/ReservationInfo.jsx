@@ -15,6 +15,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import {
   formatPhoneNumber,
   formatTimeAndDate,
+  uuidToRandomImageURL,
 } from "../../helper/stringManipulation";
 
 const ReservationInfo = ({ mobile }) => {
@@ -40,7 +41,7 @@ const ReservationInfo = ({ mobile }) => {
       }
     };
     getReservationAndRestaurant();
-  }, [URL, id]);
+  }, [URL, id, nav]);
 
   const handleDelete = async () => {
     await axios.delete(`${URL}api/reservations/${id}`);
@@ -50,12 +51,16 @@ const ReservationInfo = ({ mobile }) => {
   return (
     <Card
       className="ReservationInfo"
-      sx={{ background: "#242424", overflow: "scroll" }}
+      sx={{
+        background: "#242424",
+        overflow: "scroll",
+        borderRadius: "0px 0px 5px 5px",
+      }}
     >
       <CardMedia
         component="img"
         height="125"
-        image="https://dreamworldtravel.co.uk/assets/img/img-not-found-01.jpg"
+        image={uuidToRandomImageURL(reservation.restaurantId)}
         alt={`${restaurant.name}'s image`}
       />
       <CardContent id="content">

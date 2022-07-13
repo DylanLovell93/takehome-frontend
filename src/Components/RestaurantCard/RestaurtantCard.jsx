@@ -9,6 +9,7 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+import { uuidToRandomImageURL } from "../../helper/stringManipulation";
 
 const RestaurantCard = ({ data }) => {
   const { name, description, location, id, price } = data;
@@ -25,46 +26,42 @@ const RestaurantCard = ({ data }) => {
         maxWidth: 345,
         mx: "auto",
         my: 2,
-        background: "#606060",
+        background: "#303030",
       }}
     >
       <CardMedia
         component="img"
         height="140"
-        image="https://dreamworldtravel.co.uk/assets/img/img-not-found-01.jpg"
+        image={uuidToRandomImageURL(id)}
         alt={`${name}'s image`}
       />
       <CardContent sx={{ mb: "auto" }}>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          color="white"
-          sx={{ mb: 0 }}
-        >
-          {name} <span className="location">- {location}</span>
-        </Typography>
+        <span className="resNameAndLocation">
+          <Typography
+            gutterBottom
+            variant="h5"
+            color="white"
+            sx={{ mb: 0, display: "inline", maxWidth: "200px" }}
+          >
+            {name}
+          </Typography>
+          <span className="location">- {location}</span>
+        </span>
         <Typography variant="body2" color="white" sx={{ mb: 2 }}>
           {`Price: ${price}`}
         </Typography>
-        <Typography variant="body2" color="white" sx={{ width: "313px" }}>
+        <Typography
+          variant="body2"
+          color="white"
+          sx={{ width: 313, height: 50 }}
+        >
           {description.length > 100
             ? description.slice(0, 100) + "..."
             : description}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button
-          onClick={seeMore}
-          size="small"
-          variant="contained"
-          sx={{
-            background: "#484848",
-            "&:hover": {
-              background: "#363636",
-            },
-          }}
-        >
+        <Button onClick={seeMore} size="small" variant="contained">
           More Info
         </Button>
         <Button
@@ -72,10 +69,8 @@ const RestaurantCard = ({ data }) => {
           variant="contained"
           sx={{
             ml: 1,
-            background: "#484848",
-            "&:hover": {
-              background: "#363636",
-            },
+            backgroundColor: "rgb(205, 127, 0)",
+            "&:hover": { backgroundColor: "rgb(147, 90, 0)" },
           }}
           href={`/restaurants/${id}/newReservation`}
         >

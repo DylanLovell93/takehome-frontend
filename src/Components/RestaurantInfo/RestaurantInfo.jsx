@@ -12,7 +12,11 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
-import { formatPhoneNumber, formatTime } from "../../helper/stringManipulation";
+import {
+  formatPhoneNumber,
+  formatTime,
+  uuidToRandomImageURL,
+} from "../../helper/stringManipulation";
 import ReservationCard from "../ReservationCard/ReservationCard";
 
 const RestaurantInfo = ({ mobile }) => {
@@ -32,7 +36,7 @@ const RestaurantInfo = ({ mobile }) => {
       }
     };
     getRestaurant();
-  }, [URL, id, reset]);
+  }, [URL, id, reset, nav]);
 
   const {
     name,
@@ -57,12 +61,17 @@ const RestaurantInfo = ({ mobile }) => {
   return (
     <Card
       className="RestaurantInfo"
-      sx={{ background: "#242424", overflow: "scroll" }}
+      sx={{
+        background: "#242424",
+        overflow: "scroll",
+        borderRadius: "0px 0px 5px 5px",
+        pt: "none",
+      }}
     >
       <CardMedia
         component="img"
         height="250"
-        image="https://dreamworldtravel.co.uk/assets/img/img-not-found-01.jpg"
+        image={uuidToRandomImageURL(id)}
         alt={`${name}'s image`}
       />
       <CardContent id="content">
@@ -128,7 +137,12 @@ const RestaurantInfo = ({ mobile }) => {
           <Button
             variant="contained"
             size="large"
-            sx={{ ml: "auto", width: 250 }}
+            sx={{
+              ml: "auto",
+              width: 250,
+              backgroundColor: "rgb(205, 127, 0)",
+              "&:hover": { backgroundColor: "rgb(147, 90, 0)" },
+            }}
             href={`/restaurants/${id}/newReservation`}
           >
             Make Reservation
