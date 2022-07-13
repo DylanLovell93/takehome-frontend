@@ -8,9 +8,7 @@ const formatPhoneNumber = (number) => {
 };
 
 const formatTime = (time) => {
-  console.log(time);
   const timeArr = time.split(":");
-  console.log(timeArr);
   const firstNum = Number(timeArr[0]);
   timeArr[2] = firstNum >= 12 ? "pm" : "am";
   timeArr[0] = firstNum === 0 ? 12 : firstNum > 12 ? firstNum - 12 : firstNum;
@@ -19,13 +17,15 @@ const formatTime = (time) => {
 
 const formatTimeAndDate = (timeAndDate) => {
   const dateObj = new Date(timeAndDate);
-  console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
-  const time = [
-    dateObj.getHours().toString().padStart(2, "0"),
-    dateObj.getMinutes().toString().padStart(2, "0"),
-    dateObj.getSeconds().toString().padStart(2, "0"),
-  ];
-  return dateObj.toDateString() + ", " + formatTime(time.join(":"));
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  return `${dateObj.toLocaleString(undefined, options)}, ${new Date(
+    timeAndDate
+  ).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
 };
 
 const uuidToRandomImageURL = (uuid) => {
