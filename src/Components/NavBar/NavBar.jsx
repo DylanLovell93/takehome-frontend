@@ -55,7 +55,11 @@ const NavBar = React.forwardRef((props, ref) => {
             </>
           </Modal>
           <Link to="/restaurants" className="navIcon">
-            <img src={resyCloneWhite} className="navIconImg" />
+            <img
+              src={resyCloneWhite}
+              className="navIconImg"
+              alt="Resy Clone Logo"
+            />
           </Link>
           {mobile ? (
             <>

@@ -45,7 +45,7 @@ const EditReservationForm = () => {
       }
     };
     getRestaurant();
-  }, [URL, id]);
+  }, [URL, id, nav]);
 
   const handleFormChange = (event) => {
     setValue({ ...value, [event.target.name]: event.target.value });
