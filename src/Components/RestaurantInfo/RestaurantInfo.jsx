@@ -47,6 +47,7 @@ const RestaurantInfo = ({ mobile }) => {
     openingTime,
     closingTime,
     description,
+    tables,
   } = restaurant;
 
   const resetFunction = () => {
@@ -107,6 +108,26 @@ const RestaurantInfo = ({ mobile }) => {
         >
           {openingTime &&
             `${formatTime(openingTime)} to ${formatTime(closingTime)}`}
+        </Typography>
+        <Typography
+          gutterBottom
+          variant="h7"
+          component="div"
+          color="white"
+          sx={{ pt: 1, mb: 0 }}
+        >
+          Tables:
+        </Typography>
+        <Typography
+          gutterBottom
+          variant="h7"
+          component="div"
+          color="white"
+          sx={{ pt: 1, mb: 0, ml: 2 }}
+        >
+          Two Person: {tables ? tables.twoPersonTables : 0}
+          <br /> Four Person: {tables ? tables.fourPersonTables : 0} <br />{" "}
+          Eight Person: {tables ? tables.eightPersonTables : 0}
         </Typography>
         <Typography
           variant="body1"
