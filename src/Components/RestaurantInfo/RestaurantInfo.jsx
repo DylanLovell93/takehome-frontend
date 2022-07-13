@@ -12,7 +12,11 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
-import { formatPhoneNumber, formatTime } from "../../helper/stringManipulation";
+import {
+  formatPhoneNumber,
+  formatTime,
+  uuidToRandomImageURL,
+} from "../../helper/stringManipulation";
 import ReservationCard from "../ReservationCard/ReservationCard";
 
 const RestaurantInfo = ({ mobile }) => {
@@ -67,7 +71,7 @@ const RestaurantInfo = ({ mobile }) => {
       <CardMedia
         component="img"
         height="250"
-        image="https://dreamworldtravel.co.uk/assets/img/img-not-found-01.jpg"
+        image={uuidToRandomImageURL(id)}
         alt={`${name}'s image`}
       />
       <CardContent id="content">

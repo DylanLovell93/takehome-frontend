@@ -9,6 +9,7 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+import { uuidToRandomImageURL } from "../../helper/stringManipulation";
 
 const RestaurantCard = ({ data }) => {
   const { name, description, location, id, price } = data;
@@ -31,7 +32,7 @@ const RestaurantCard = ({ data }) => {
       <CardMedia
         component="img"
         height="140"
-        image="https://dreamworldtravel.co.uk/assets/img/img-not-found-01.jpg"
+        image={uuidToRandomImageURL(id)}
         alt={`${name}'s image`}
       />
       <CardContent sx={{ mb: "auto" }}>

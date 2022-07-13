@@ -15,6 +15,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import {
   formatPhoneNumber,
   formatTimeAndDate,
+  uuidToRandomImageURL,
 } from "../../helper/stringManipulation";
 
 const ReservationInfo = ({ mobile }) => {
@@ -59,7 +60,7 @@ const ReservationInfo = ({ mobile }) => {
       <CardMedia
         component="img"
         height="125"
-        image="https://dreamworldtravel.co.uk/assets/img/img-not-found-01.jpg"
+        image={uuidToRandomImageURL(reservation.restaurantId)}
         alt={`${restaurant.name}'s image`}
       />
       <CardContent id="content">
