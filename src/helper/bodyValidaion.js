@@ -130,13 +130,16 @@ const timeToDateObject = (timeStr) => {
 const dateObjToTimestamp = (dateObj) => {
   const [year, month, day, hours, minutes, seconds, milisec] = [
     dateObj.getFullYear().toString().padStart(4, "0"),
-    dateObj.getMonth().toString().padStart(2, "0"),
-    dateObj.getDay().toString().padStart(2, "0"),
+    (dateObj.getMonth() + 1).toString().padStart(2, "0"),
+    dateObj.getDate().toString().padStart(2, "0"),
     dateObj.getHours().toString().padStart(2, "0"),
     dateObj.getMinutes().toString().padStart(2, "0"),
     dateObj.getSeconds().toString().padStart(2, "0"),
     dateObj.getMilliseconds().toString().padStart(3, "0"),
   ];
+  console.log(
+    `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milisec}Z`
+  );
   return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milisec}Z`;
 };
 const validateNewReservation = (formData) => {

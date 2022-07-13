@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import enLocale from "date-fns/locale/en-US";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { formSx } from "../Styles/MuiFormStyle";
@@ -133,13 +134,17 @@ const EditReservationForm = () => {
           />
         </div>
         <div className="formControl">
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <LocalizationProvider
+            dateAdapter={AdapterDateFns}
+            adapterLocale={enLocale}
+          >
             <DateTimePicker
               label="Date & Time"
               value={value.time}
               onChange={(newValue) => {
                 setValue({ ...value, time: newValue });
               }}
+              ampm={true}
               minDate={new Date(Date.now())}
               minTime={timeToDateObject(restaurant.openingTime)}
               maxTime={timeToDateObject(restaurant.closingTime)}
